@@ -13,7 +13,7 @@ class PostersTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i < 3; $i++) {
+        for ($i=0; $i < 10; $i++) {
           $new_poster = new Poster();
           $new_poster->url = $faker->imageUrl();
           $new_poster->album_id = $i + 1;
