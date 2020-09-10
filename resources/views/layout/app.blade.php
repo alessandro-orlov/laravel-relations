@@ -123,6 +123,9 @@
               padding: 5px 10px;
               cursor: pointer;
             }
+            .created-at {
+              margin: -20px 0 30px;
+            }
 
             .container .poster-box img {
               width: 100%;

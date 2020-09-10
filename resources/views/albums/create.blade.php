@@ -20,14 +20,14 @@
         </ul>
       </div>
     @endif
-    
+
     <form action="{{ route('albums.store') }}" method="post">
       @csrf
       @method('POST')
 
       {{-- Album --}}
       <label>Album Title</label><br>
-      <input type="text" name="album-title" value="{{ old('album-title') }}" placeholder="Album Title">
+      <input type="text" name="title" value="{{ old('title') }}" placeholder="Album Title">
       <br>
       <br>
       <label>Album Artis</label><br>
@@ -40,7 +40,7 @@
       <br>
       {{-- Song --}}
       <label>Song</label><br>
-      <input type="text" name="title" value="{{ old('title') }}" placeholder="Song">
+      <input type="text" name="song_title" value="{{ old('song_title') }}" placeholder="Song">
       <br>
       <br>
       <label>Genre</label><br>

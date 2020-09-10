@@ -49,15 +49,16 @@ class AlbumController extends Controller
       $request->validate($this->validationSong());
 
       $requested_info = $request->all();
+      // dd($requested_info);
 
       $new_album = new Album();
-      $new_album->title = $requested_info['album-title'];
+      $new_album->title = $requested_info['title'];
       $new_album->artist = $requested_info['artist'];
       $new_album->year = $requested_info['year'];
       $new_album->save();
 
       $new_album_song = new Song();
-      $new_album_song->title = $requested_info['title'];
+      $new_album_song->song_title = $requested_info['song_title'];
       $new_album_song->genre = $requested_info['genre'];
       $new_album_song->album_id = $new_album->id;
       $new_album_song->save();
@@ -89,7 +90,6 @@ class AlbumController extends Controller
      */
     public function edit(Album $album)
     {
-
         return view('albums.edit', compact('album'));
     }
 
@@ -100,9 +100,25 @@ class AlbumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Album $album, Song $song)
     {
-        //
+      // Validazione
+      $request->validate($this->validationAlbum());
+      $request->validate($this->validationSong());
+
+      $request_data = $request->all();
+      // dd($request_data);
+
+      $album->update($request_data);
+      $album->save();
+
+      $song->update($request_data);
+      $song->save();
+
+
+
+
+      return redirect()->route('albums.show', compact('album'));
     }
 
     /**
@@ -136,7 +152,7 @@ class AlbumController extends Controller
 
     protected function validationSong() {
       return [
-        'title' => 'required|max:255',
+        // 'song_title' => 'required|max:255',
         'genre' => 'required|max:255',
       ];
     }

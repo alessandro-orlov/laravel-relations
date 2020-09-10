@@ -26,6 +26,7 @@
         </ul>
       </div>
     </div>
+    <div class="created-at">Added: {{$album->created_at->isoFormat('dddd D/M/YYYY')}}</div>
 
 
     @if (!empty($album->poster->url))
@@ -41,7 +42,7 @@
       <h2>Lista Canzoni</h2>
       <ul>
         @foreach ($album->songs as $song)
-          <li>{{ $song->title }}</li>
+          <li>{{ $song->song_title }}</li>
         @endforeach
       </ul>
     @endif
