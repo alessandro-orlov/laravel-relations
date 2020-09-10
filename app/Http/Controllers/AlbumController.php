@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Album;
+use App\Song;
 
 class AlbumController extends Controller
 {
@@ -16,6 +17,12 @@ class AlbumController extends Controller
     {
         $albums = Album::all();
 
+        $songs = Song::all();
+        dd($songs);
+
+        // Visualizzo ultimo album inserito come primo risulatato della pagina
+        $albums = Album::orderBy('created_at', 'desc')->get();
+
         return view('albums.index', compact('albums'));
     }
 
@@ -26,7 +33,7 @@ class AlbumController extends Controller
      */
     public function create()
     {
-        //
+      return view('albums.create');
     }
 
     /**
@@ -37,7 +44,21 @@ class AlbumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $requested_info = $request->all();
+
+      $new_album = new Album();
+      $new_album->title = $requested_info['album-title'];
+      $new_album->artist = $requested_info['artist'];
+      $new_album->year = $requested_info['year'];
+      $new_album->save();
+
+      $new_album_song = new Song();
+      $nwe_album_song->title = $requested_info['title'];
+      $nwe_album_song->genre = $requested_info['genre'];
+      $nwe_album_song->album_id = $new_album->id;
+      $new_album_song->save();
+
+      return redirect()->route('albums.show', $new_album);
     }
 
     /**

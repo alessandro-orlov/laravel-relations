@@ -9,7 +9,6 @@
 {{-- Page content --}}
 @section('content')
 
-
     <h1>Tutti gli album</h1>
     @foreach ($albums as $album)
       <div class="album-list">

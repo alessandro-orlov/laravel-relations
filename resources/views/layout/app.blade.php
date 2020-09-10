@@ -40,6 +40,13 @@
             nav ul > li:hover a {
               text-decoration: underline;
             }
+            .add-album {
+              display: inline-block;
+              padding: 5px 10px;
+              background: #00c3a8;
+              color: #fff;
+              border-radius: 5px;
+            }
             .big-text {
               font-size: 1.3em;
             }
