@@ -2,13 +2,31 @@
 
 {{-- Page title --}}
 @section('title')
-  Dettagli album: {{ $album->title }}
+   Album details: {{ $album->title }}
 @endsection
 
 
 @section('content')
+    <div class="show-controls">
+      <h1>Album: {{ $album->title }}</h1>
 
-    <h1>Album: {{ $album->title }}</h1>
+      <div class="controls">
+        <ul>
+          <li>Controls:</li>
+          <li><a class="edit-btn" href="{{ route('albums.edit', $album ) }}">Edit</a></li>
+          <li>
+            <form class="delete-btn" action="{{ route('albums.destroy', $album) }}" method="post">
+              @csrf
+              @method('DELETE')
+
+              <input type="submit" value="Delete Album">
+
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+
 
     @if (!empty($album->poster->url))
       <div class="poster-box">

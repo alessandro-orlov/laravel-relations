@@ -11,13 +11,16 @@
 
 
     <h1>Inserisci un nuovo Album</h1>
-    {{-- @foreach ($albums as $album)
-      <div class="album-list">
-        <h3><a href="{{ route('albums.show', $album) }}">{{ $album->title}} <small>({{$album->artist}})</small></a></h3>
-        <span>Anno album: {{ $album->year}}</span>
+    @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
       </div>
-    @endforeach --}}
-
+    @endif
+    
     <form action="{{ route('albums.store') }}" method="post">
       @csrf
       @method('POST')

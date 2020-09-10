@@ -12,8 +12,16 @@
     <h1>Tutti gli album</h1>
     @foreach ($albums as $album)
       <div class="album-list">
-        <h3><a href="{{ route('albums.show', $album) }}">{{ $album->title}} <small>({{$album->artist}})</small></a></h3>
-        <span>Anno album: {{ $album->year}}</span>
+        <div class="list-container img">
+          <a href="{{ route('albums.show', $album) }}"><img src="{{$album->poster->url}}" alt="{{$album->title}}"></a>
+        </div>
+        <div class="list-container info">
+          <h3><a href="{{ route('albums.show', $album) }}">{{ $album->title}}</a></h3>
+          <div>
+            {{$album->artist}}
+          </div>
+          <div>Anno album: {{ $album->year}}</div>
+        </div>
       </div>
     @endforeach
 

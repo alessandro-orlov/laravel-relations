@@ -58,15 +58,70 @@
             }
 
             .container .album-list {
-              padding-bottom: 20px;
+              padding: 8px;
+              border: 1px solid #ccc;
+              margin: 10px 0;
+              display: flex;
+              flex-wrap: wrap;
+            }
+            .album-list .list-container {
+              padding: 5px;
+            }
+            .album-list .list-container div {
+              padding: 3px 0;
+            }
+            .list-container.img {
+              width:150px;
+            }
+            .list-container.img img {
+              width: 100%;
+              padding: 3px;
+              border: 1px solid #ccc;
             }
 
-            .container .album-list h3 {
-              margin-bottom: 10px;
+            .list-container.info {
+              padding: 0 10px;
+            }
+            .container .album-list .info h3 {
+              margin: 8px 0;
             }
 
             .container .poster-box {
               max-width: 450px;
+            }
+            /* SHOW PAGE */
+            .show-controls {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-between;
+            }
+            .controls ul {
+              list-style: none;
+              display: flex;
+              align-items: center;
+            }
+            .controls ul > li {
+              margin-left: 20px;
+            }
+            .controls ul > li form {
+              display: inline-block;
+              vertical-align: middle;
+            }
+            .controls a.edit-btn {
+              padding: 5px 15px;
+              background-color: #4cd425;
+              color: #fff;
+              text-decoration: none;
+            }
+            .controls .delete-btn input[type="submit"] {
+              display: inline-block;
+              background-color: red;
+              color: #fff;
+              font-family: 'Nunito', sans-serif;
+              font-size: 1em;
+              border: none;
+              padding: 5px 10px;
+              cursor: pointer;
             }
 
             .container .poster-box img {
